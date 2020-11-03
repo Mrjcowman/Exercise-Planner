@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/exercisedb", {u
 
 // Seed here?
 
+
 // // ROUTES ==================================
 // app.get("/", (req, res)=>{
 //     // TODO: render index
@@ -35,7 +36,7 @@ app.post("/api/exercises", (req, res)=>{
 
 app.get("/api/exercises/:id", (req, res)=>{
     // TODO: implement read
-    db.CardioExercise.findById(id)
+    db.CardioExercise.findById(req.params.id)
         .then(dbExercise=>{
             res.json(dbExercise);
         }).catch(err=>{
@@ -45,7 +46,7 @@ app.get("/api/exercises/:id", (req, res)=>{
 
 app.post("/api/exercises/:id", (req, res)=>{
     // TODO: implement update
-    db.CardioExercise.findByIdAndUpdate(id, req.body)
+    db.CardioExercise.findByIdAndUpdate(req.params.id, req.body)
         .then(dbExercise=>{
             res.json(dbExercise);
         }).catch(err=>{
@@ -55,7 +56,7 @@ app.post("/api/exercises/:id", (req, res)=>{
 
 app.delete("/api/exercises/:id", (req, res)=>{
     // TODO: implement delete
-    db.CardioExercise.findByIdAndDelete(id)
+    db.CardioExercise.findByIdAndDelete(req.params.id)
         .then(dbExercise=>{
             res.json(dbExercise);
         }).catch(err=>{
