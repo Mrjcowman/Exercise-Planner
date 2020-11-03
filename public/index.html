@@ -12,7 +12,35 @@
     <main>
         <h1>Exercise Planner!</h1>
         <section class="exerciseEdit">
-            
+            <form>
+                <label for="exerciseName">Exercise Name</label><br>
+                <input type="text" name="exerciseName" id="inputExerciseName">
+                <select name="exerciseType" id="selectExerciseType">
+                    <option value="cardio">Cardio</option>
+                    <option value="strength">Strength</option>
+                </select>
+                <br>
+                <label for="duration">Duration</label><br>
+                <input type="number" name="duration" id="inputDuration">
+                <br>
+                <div class="cardioInputs">
+                    <label for="distance">Distance</label><br>
+                    <input type="number" name="distance" id="inputDistance">
+                    <br>
+                </div>
+                <div class="strengthInputs">
+                    <label for="weight">Weight</label><br>
+                    <input type="number" name="weight" id="inputWeight">
+                    <br>
+                    <label for="sets">Sets</label><br>
+                    <input type="number" name="sets" id="inputSets">
+                    <br>
+                    <label for="reps">Reps</label><br>
+                    <input type="number" name="reps" id="inputReps">
+                    <br>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         </section>
         <section class="exerciseSelect">
 
