@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/exercisedb", {u
 // });
 
 // API =====================================
-app.post("/api/exercises", (req, res)=>{
+app.post("/api/exercises/cardio", (req, res)=>{
     // TODO: implement create
     db.CardioExercise.create(req.body)
         .then(dbExercise => {
@@ -34,7 +34,18 @@ app.post("/api/exercises", (req, res)=>{
         })
 });
 
-app.get("/api/exercises/:id", (req, res)=>{
+app.post("/api/exercises/strength", (req, res)=>{
+    // TODO: implement create
+    db.StrengthExercise.create(req.body)
+        .then(dbExercise => {
+            res.json(dbExercise);
+        })
+        .catch(err=>{
+            res.json(err);
+        })
+});
+
+app.get("/api/exercises/cardio/:id", (req, res)=>{
     // TODO: implement read
     db.CardioExercise.findById(req.params.id)
         .then(dbExercise=>{
@@ -44,7 +55,17 @@ app.get("/api/exercises/:id", (req, res)=>{
         })
 });
 
-app.post("/api/exercises/:id", (req, res)=>{
+app.get("/api/exercises/strength/:id", (req, res)=>{
+    // TODO: implement read
+    db.StrengthExercise.findById(req.params.id)
+        .then(dbExercise=>{
+            res.json(dbExercise);
+        }).catch(err=>{
+            res.json(err);
+        })
+});
+
+app.post("/api/exercises/cardio/:id", (req, res)=>{
     // TODO: implement update
     db.CardioExercise.findByIdAndUpdate(req.params.id, req.body)
         .then(dbExercise=>{
@@ -54,9 +75,29 @@ app.post("/api/exercises/:id", (req, res)=>{
         })
 });
 
-app.delete("/api/exercises/:id", (req, res)=>{
+app.post("/api/exercises/strength/:id", (req, res)=>{
+    // TODO: implement update
+    db.StrengthExercise.findByIdAndUpdate(req.params.id, req.body)
+        .then(dbExercise=>{
+            res.json(dbExercise);
+        }).catch(err=>{
+            res.json(err);
+        })
+});
+
+app.delete("/api/exercises/cardio/:id", (req, res)=>{
     // TODO: implement delete
     db.CardioExercise.findByIdAndDelete(req.params.id)
+        .then(dbExercise=>{
+            res.json(dbExercise);
+        }).catch(err=>{
+            res.json(err);
+        })
+});
+
+app.delete("/api/exercises/strength/:id", (req, res)=>{
+    // TODO: implement delete
+    db.StrengthExercise.findByIdAndDelete(req.params.id)
         .then(dbExercise=>{
             res.json(dbExercise);
         }).catch(err=>{
