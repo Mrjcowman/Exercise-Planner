@@ -1,14 +1,35 @@
 $(document).ready(function(){
     console.log("Loaded!");
 
-    $(".exerciseEdit form").on("submit", (event)=>{
+    $(".exerciseAdd form").on("submit", (event)=>{
         event.preventDefault();
         switch($("#selectExerciseType").val()){
             case "cardio":
-                $.post("/api/exercises/cardio", cardioObject, (err, data)=>{
-                    if(err) throw err;
+                let cardioObject = {
+                    name: $("#inputExerciseName").val(),
+                    duration: parseFloat($("#inputDuration").val()),
+                    distance: parseFloat($("#inputDistance").val())
+                }
+                $.post("/api/exercises/cardio", cardioObject).then(data=>{
                     console.log(data);
+                }).catch(err=>{
+                    console.error(err);
                 })
+                break;
+            case "strength":
+                let strengthObject = {
+                    name: $("#inputExerciseName").val(),
+                    duration: parseFloat($("#inputDuration").val()),
+                    distance: parseFloat($("#inputWeight").val()),
+                    sets: parseInt($("#inputSets").val()),
+                    reps: parseInt($("#inputReps").val())
+                }
+                $.post("/api/exercises/strength", strengthObject).then(data=>{
+                    console.log(data);
+                }).catch(err=>{
+                    console.error(err);
+                })
+                break;
         }
     })
 
